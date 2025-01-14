@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GPS Video Recorder Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1><i class="fas fa-video"></i> GPS Video Recorder Pro</h1>
+                <div class="gps-status" id="gpsStatus">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>Waiting for GPS...</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="camera-container">
+                <div class="video-wrapper" id="videoWrapper">
+                    <video id="videoElement" autoplay playsinline muted></video>
+                    <canvas id="overlayCanvas"></canvas>
+                    
+                    <div class="camera-overlay">
+                        <div class="overlay-top">
+                            <div class="recording-indicator" id="recordingIndicator">
+                                <div class="pulse-dot"></div>
+                                <span class="rec-time" id="recordingTime">00:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="zoom-controls-overlay">
+                            <button class="zoom-btn" id="zoomOutBtn" aria-label="Zoom Out">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span id="zoomLevel">1.0x</span>
+                            <button class="zoom-btn" id="zoomInBtn" aria-label="Zoom In">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="overlay-bottom">
+                            <div class="gps-info" id="gpsInfo">
+                                <div class="gps-row">
+                                    <i class="fas fa-location-dot"></i>
+                                    <span id="coordinates">Waiting for GPS...</span>
+                                </div>
+                                <div class="gps-row">
+                                    <i class="fas fa-mountain"></i>
+                                    <span id="altitude">Alt: --</span>
+                                </div>
+                                <div class="gps-row">
+                                    <i class="fas fa-compass"></i>
+                                    <span id="speed">Speed: --</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="camera-controls">
+                    <button class="control-btn switch-camera" id="switchCameraBtn" aria-label="Switch Camera">
+                        <i class="fas fa-camera-rotate"></i>
+                    </button>
+                    <button class="control-btn record-btn" id="recordBtn" aria-label="Record">
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button class="control-btn stop-btn" id="stopBtn" disabled aria-label="Stop Recording">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
+
+            <section class="recordings-section">
+                <h2><i class="fas fa-film"></i> Your Recordings</h2>
+                <div class="recordings-grid" id="recordingsList">
+                    <!-- Recordings will be added here dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <div class="gesture-hint" id="gestureHint">
+            <i class="fas fa-hand-point-up"></i>
+            <span>Pinch to zoom</span>
+        </div>
+
+        <div class="error-toast" id="errorToast" role="alert"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
